@@ -2,7 +2,33 @@
   "api": {
     "users": [
       {
-        "userId": 1,
+        "userId": "1",
+        "userToken": "abc",
+        "userData": {
+          "contacts": [
+            { "id": 1 },
+            { "id": 2 },
+            { "id": 3 },
+            { "id": 4 },
+            { "id": 5 }
+          ],
+          "profile": {}
+        }
+      },{
+        "userId": "2",
+        "userToken": "abc",
+        "userData": {
+          "contacts": [
+            { "id": 1 },
+            { "id": 2 },
+            { "id": 3 },
+            { "id": 4 },
+            { "id": 5 }
+          ],
+          "profile": {}
+        }
+      },{
+        "userId": "3",
         "userToken": "abc",
         "userData": {
           "contacts": [
