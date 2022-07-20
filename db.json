@@ -13,7 +13,8 @@
           ],
           "profile": {}
         }
-      },{
+      },
+        {
         "userId": "2",
         "userToken": "abc",
         "userData": {
@@ -26,7 +27,8 @@
           ],
           "profile": {}
         }
-      },{
+      },
+        {
         "userId": "3",
         "userToken": "abc",
         "userData": {
