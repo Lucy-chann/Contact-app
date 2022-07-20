@@ -1,7 +1,7 @@
 {
     "users": [
       {
-        "id": "1",
+        "id": 1,
         "userToken": "abc",
         "userData": {
           "contacts": [
@@ -15,7 +15,7 @@
         }
       },
         {
-        "id": "2",
+        "id": 2,
         "userToken": "abc",
         "userData": {
           "contacts": [
@@ -29,7 +29,7 @@
         }
       },
         {
-        "id": "3",
+        "id": 3,
         "userToken": "abc",
         "userData": {
           "contacts": [
