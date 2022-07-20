@@ -16,7 +16,7 @@
       },
         {
         "id": 2,
-        "userToken": "abc",
+        "userToken": "def",
         "userData": {
           "contacts": [
             { "id": 1 },
@@ -30,7 +30,7 @@
       },
         {
         "id": 3,
-        "userToken": "abc",
+        "userToken": "ghi",
         "userData": {
           "contacts": [
             { "id": 1 },
