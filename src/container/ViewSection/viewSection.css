@@ -1,0 +1,132 @@
+#main-view,
+.add-contact-container {
+  transition: color 0.2s linear;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  color: transparent;
+  height: 100%;
+}
+
+#main-view:hover,
+.add-contact-container:hover {
+  color: #777;
+}
+
+::-webkit-scrollbar {
+  position: fixed;
+  width: 25px;
+  border: 4px solid transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 2rem;
+  border: 10px solid transparent;
+  box-shadow: inset 0 0 0 10px;
+}
+
+#view-footer {
+  position: absolute;
+  height: 8em;
+  width: 100%;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
+
+.options-container {
+  width: 100%;
+  height: 75%;
+  position: absolute;
+}
+
+.options-opener-btn {
+  position: absolute;
+  right: 25px;
+  top: 50%;
+  transform: translate(0, -50%);
+  z-index: 3;
+}
+
+.options-opener-btn:active {
+  transform: translate(0, -50%) translate(0, 3px) scale(0.98);
+}
+
+.options-opener-btn > span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.options-opener-btn > span::before,
+.options-opener-btn > span::after {
+  content: "";
+  transition: transform 0.15s ease-in-out;
+  position: absolute;
+  width: 5px;
+  height: 35px;
+  background-color: dodgerblue;
+  border-radius: 2em;
+}
+
+.options-opener-btn > span::before {
+  transform: rotate(-90deg);
+  z-index: 1;
+}
+
+.btnOpened::after {
+  transform: rotate(-90deg);
+}
+
+.btnOpened::before {
+  background-color: royalblue !important;
+}
+
+.extra-options-container {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  height: 5.5rem;
+  transform: translate(0, -50%);
+}
+
+.extra-options-container > button {
+  transition: all 0.35s cubic-bezier(1, -0.1, 0, 1.23), transform 0.1s ease,
+    box-shadow 0.1s ease !important;
+  position: absolute;
+  top: 50%;
+  font-size: 2rem;
+  color: dodgerblue;
+  right: 25px;
+  transform: translate(0, -50%);
+  opacity: 0;
+  z-index: 2;
+}
+
+.extra-options-container > button:active {
+  transform: translate(0, -50%) translate(0, 3px) scale(0.98);
+}
+
+.show-extra-btns {
+  opacity: 1 !important;
+}
+
+@media screen and (max-width: 510px) {
+  #main-view::-webkit-scrollbar {
+    all: initial;
+    width: 0;
+  }
+
+  #view-footer {
+    align-items: flex-end;
+  }
+
+  .options-container {
+    margin-bottom: 10px;
+  }
+
+  .options-container button {
+    right: 12px;
+  }
+}
