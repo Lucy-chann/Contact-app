@@ -1,9 +1,8 @@
 import toast from "react-hot-toast";
 
 function notification({ type, value, ...rest }) {
-  toast(value, {
+  toast(<b>{value}</b>, {
     type: type,
-    position: "top-right",
     ariaProps: {
       role: "alert",
     },

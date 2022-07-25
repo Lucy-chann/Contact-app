@@ -7,12 +7,12 @@ const createUserToken = (len) => {
     .substring(2, len + 2);
 };
 
-const getUserToken = async () => {
+const getUserToken = async (fetchContactsFunc) => {
   const userTokenPromise = new Promise(async (resolve, reject) => {
     try {
       const userToken = localStorage.getItem("user-token");
       if (userToken) {
-        /* --- on developement --- */
+        fetchContactsFunc();
       } else {
         const newUserToken = createUserToken(10);
         localStorage.setItem("user-token", newUserToken);

@@ -3,10 +3,10 @@ import { withRouter } from "react-router-dom";
 import "./addContactPage.css";
 import { useStateContexts } from "../../providers/ContactsContext";
 import { postNewContact } from "../../services/userServices";
+import toast from "react-hot-toast";
 import { inputDatas } from "../../utils/ElementDatas/ElementDatas";
 import navbarActiveRemover from "../../utils/navbarActiveRemover/navbarActiveRemover";
 import AddContactForm from "../../components/AddContactForm/AddContactForm";
-import { notification } from "../../utils/alerts";
 import { requestTryCatcher } from "../../utils/NetworkFuncs/networkFuncs";
 
 const AddContactPage = (props) => {
@@ -20,11 +20,7 @@ const AddContactPage = (props) => {
   });
   const [imageURL, setImageURL] = useState("");
 
-  const getAllUserContacts = useStateContexts();
-
-  useEffect(() => {
-    URL.revokeObjectURL(imageURL);
-  }, []);
+  const { getAllUserContacts } = useStateContexts();
 
   useEffect(() => {
     setInputValues({ ...inputValues, profileImage: imageURL });
@@ -35,7 +31,6 @@ const AddContactPage = (props) => {
       const fileReader = new FileReader();
       fileReader.readAsDataURL(file);
       fileReader.onload = () => {
-        console.log(fileReader);
         resolve(fileReader.result);
       };
       fileReader.onerror = (error) => {
@@ -54,15 +49,22 @@ const AddContactPage = (props) => {
 
   const addContactHandler = () => {
     requestTryCatcher(() => {
-      postNewContact(localStorage.getItem("user-token"), {
-        ...inputValues,
-        dateCreated: new Date().toLocaleString(),
-      }).then((res) => {
-        res.statusText === "Created" &&
-          notification({ type: "success", value: "Contact Added" });
+      const requestPromise = postNewContact(
+        localStorage.getItem("user-token"),
+        {
+          ...inputValues,
+          dateCreated: new Date().toLocaleString(),
+        }
+      ).then(() => {
         getAllUserContacts();
         setInputValues({});
         props.history.push("/contacts");
+      });
+
+      toast.promise(requestPromise, {
+        loading: <b>Loading...</b>,
+        success: <b>Contact Added</b>,
+        error: <b>Fail</b>,
       });
     });
   };

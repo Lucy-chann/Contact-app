@@ -4,7 +4,6 @@ import { requestTryCatcher } from "../utils/NetworkFuncs/networkFuncs";
 import {
   getUserApiRequest,
   httpGetUserContacts,
-  httpGetContacts,
 } from "../services/userServices";
 import { getUserToken } from "../utils/UserTokenFuncs/UserTokenFuncs";
 import { notification } from "../utils/alerts";
@@ -45,6 +44,12 @@ const ContactsContextComp = ({ history, children }) => {
   const [user, setUser] = useState(userInitialValues);
   const [contacts, setContacts] = useState([]);
 
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  window.onresize = () => {
+    setWindowWidth(window.innerWidth);
+  };
+
   const [navbarListItemOn, setNavbarListItemOn] = useState("/");
 
   const [isMobileMenuOpened, setIsMobileMenuOpened] = useState(false);
@@ -74,7 +79,7 @@ const ContactsContextComp = ({ history, children }) => {
 
   useEffect(() => {
     changePage("/");
-    getUserToken()
+    getUserToken(getAllUserContacts)
       .then((res) => {
         res.done
           ? requestTryCatcher(getAllUsers)
@@ -83,12 +88,10 @@ const ContactsContextComp = ({ history, children }) => {
       .catch((err) => {
         console.error(err);
       });
-
-    getAllUserContacts();
   }, []);
 
   return (
-    <StateContexts.Provider value={getAllUserContacts}>
+    <StateContexts.Provider value={{ windowWidth, getAllUserContacts }}>
       <UserContext.Provider value={{ user, setUser, contacts, setContacts }}>
         <NavbarListItemIndexContext.Provider
           value={{ navbarListItemOn, setNavbarListItemOn, changePage }}

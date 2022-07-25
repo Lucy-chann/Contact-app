@@ -18,7 +18,6 @@ const MobileMenu = () => {
 
   useEffect(() => {
     document.addEventListener("click", handleClick);
-    return () => document.removeEventListener("click", handleClick);
     function handleClick(e) {
       if (componentRef && componentRef.current) {
         const ref = componentRef.current;
@@ -27,6 +26,11 @@ const MobileMenu = () => {
         }
       }
     }
+    return () => document.removeEventListener("click", handleClick);
+  }, []);
+
+  useEffect(() => {
+    return () => setIsMobileMenuOpened(false);
   }, []);
 
   const menuIconElements = [];

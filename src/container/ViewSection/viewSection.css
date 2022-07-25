@@ -108,8 +108,28 @@
   transform: translate(0, -50%) translate(0, 3px) scale(0.98);
 }
 
+.extra-options-container > button:last-child {
+  transition-delay: 0.08s !important;
+}
+
 .show-extra-btns {
   opacity: 1 !important;
+}
+
+.extra-btn-1-opened-horizontal {
+  right: 7.75rem !important;
+}
+
+.extra-btn-2-opened-horizontal {
+  right: 13.9rem !important;
+}
+
+.extra-btn-1-opened-vertical {
+  top: -3.5rem !important;
+}
+
+.extra-btn-2-opened-vertical {
+  top: -9.75rem !important;
 }
 
 @media screen and (max-width: 510px) {

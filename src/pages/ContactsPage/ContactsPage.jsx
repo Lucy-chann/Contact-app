@@ -1,13 +1,16 @@
-import { useState, useEffect, useRef } from "react";
-import { useUserContext } from "../../providers/ContactsContext";
+import { useState } from "react";
+import {
+  useStateContexts,
+  useUserContext,
+} from "../../providers/ContactsContext";
 import { extraButtonDatas } from "../../utils/ElementDatas/ElementDatas";
 import Button from "../../components/button/Button";
 import Contact from "../../container/Contact/Contact";
 
-const windowWidth = window.innerWidth;
-
 const ContactsPage = (props) => {
   const [btnOpened, setBtnOpened] = useState(false);
+
+  const { windowWidth } = useStateContexts();
 
   const { contacts } = useUserContext();
 
@@ -15,31 +18,11 @@ const ContactsPage = (props) => {
     setBtnOpened(!btnOpened);
   };
 
-  const extraBtnsContainer = useRef();
-
-  useEffect(() => {
-    if (btnOpened) {
-      Object.values(extraBtnsContainer.current.children).forEach(
-        (childElement, index) => {
-          childElement.className = "show-extra-btns";
-          if (windowWidth > 660) {
-            childElement.style.right = `${extraButtonDatas[index].position}rem`;
-          } else {
-            childElement.style.top = `-${
-              extraButtonDatas[index].position - 4.4
-            }rem`;
-          }
-        }
-      );
-    } else {
-      Object.values(extraBtnsContainer.current.children).forEach(
-        (childElement) => {
-          childElement.className = "";
-          childElement.style = null;
-        }
-      );
-    }
-  }, [btnOpened]);
+  const extraBtnClassNameHandler = (id) => {
+    return `extra-btn-${id}-opened-${
+      windowWidth > 510 ? "horizontal" : "vertical"
+    } show-extra-btns`;
+  };
 
   return (
     <>
@@ -53,9 +36,14 @@ const ContactsPage = (props) => {
           <Button onClick={btnOpenHandler} className="options-opener-btn">
             <span className={btnOpened ? "btnOpened" : ""}></span>
           </Button>
-          <div className="extra-options-container" ref={extraBtnsContainer}>
-            {extraButtonDatas.map(({ id, Icon, handler }) => (
-              <Button key={id} onClick={() => handler(props.history.push)}>
+          <div className="extra-options-container">
+            {extraButtonDatas.map(({ id, Icon, style, handler }) => (
+              <Button
+                key={id}
+                style={style}
+                className={btnOpened ? extraBtnClassNameHandler(id) : ""}
+                onClick={() => handler(props.history.push)}
+              >
                 <Icon />
               </Button>
             ))}

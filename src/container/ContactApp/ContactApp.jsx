@@ -6,10 +6,6 @@ import Navbar from "../../components/Navbar/Navbar";
 import ViewSection from "../ViewSection/ViewSection";
 import { Toaster } from "react-hot-toast";
 
-window.addEventListener("resize", () => {
-  window.location.reload();
-});
-
 function ContactApp() {
   return (
     <BrowserRouter>
@@ -19,7 +15,7 @@ function ContactApp() {
           <Navbar />
           <ViewSection />
         </div>
-        <Toaster />
+        <Toaster position="top-right" />
       </ContactsContextComp>
     </BrowserRouter>
   );

@@ -37,7 +37,6 @@ const listItems = [
 const extraButtonDatas = [
   {
     id: 1,
-    position: 13.85,
     Icon: BiSelectMultiple,
     handler: () => {
       console.log("on test");
@@ -45,7 +44,6 @@ const extraButtonDatas = [
   },
   {
     id: 2,
-    position: 7.75,
     Icon: FaUserPlus,
     handler: (historyProps) => {
       historyProps("/add-contact");
