@@ -1,0 +1,49 @@
+.inputContainer {
+  --transform-center-placeholder: translate(15px, -50%);
+  position: relative;
+}
+
+.input {
+  transition: background 0.25s ease, border 0.25s ease, outline 0.25s ease;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 10px 13px;
+  font-size: 1rem;
+  color: #414141;
+  border-bottom: 3px solid #a1a1a1;
+  outline: 1px solid #a1a1a1;
+  font-family: "poppins", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+    sans-serif;
+}
+
+.inputPlaceholderText {
+  transition: all 0.25s ease;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: var(--transform-center-placeholder);
+  pointer-events: none;
+  font-size: 1.1rem;
+  color: #777;
+}
+
+.input:focus {
+  background-color: #fafafa;
+  border-bottom-color: royalblue;
+  outline-color: royalblue;
+}
+
+.inputFilled {
+  border-bottom-color: royalblue;
+  outline-color: royalblue;
+}
+
+.input:focus + .inputPlaceholderText,
+.inputPlaceholderFilled {
+  top: -12px;
+  left: -10px;
+  transform: var(--transform-center-placeholder) scale(0.85);
+  color: royalblue;
+}

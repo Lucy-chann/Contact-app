@@ -1,0 +1,222 @@
+#mobile-menu,
+.menuLink {
+  align-items: center;
+}
+
+#contact-app > section,
+.menuLink {
+  height: 100%;
+}
+
+#mobile-menu,
+#view-section,
+.listItem,
+.menuLink {
+  width: 100%;
+}
+
+#contact-app,
+.menu-content-container,
+.menuLink {
+  display: flex;
+}
+
+#mobile-menu,
+.menuLink {
+  flex-direction: column;
+}
+
+#contact-app,
+.menu-content-container,
+.menu-opened-content-container {
+  width: 90%;
+}
+
+#contact-app {
+  height: 90%;
+  min-height: 15em;
+  border-radius: 17.5px;
+  overflow: hidden;
+}
+
+#mobile-menu {
+  height: fit-content;
+  background-color: #fff;
+  display: none;
+  justify-content: center;
+  padding: 1em 0;
+  z-index: 5;
+}
+
+.menu-content-container {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-opened-content-container {
+  transition: height 0.25s ease;
+  height: 0;
+  overflow: hidden;
+}
+
+.menu-opened {
+  height: 97px;
+}
+
+#navbar-section {
+  width: 20%;
+  min-width: 6rem;
+  max-width: 7rem;
+  display: inline-block;
+  background-color: #fff;
+  position: relative;
+}
+
+#view-section {
+  transition: height 0.25s ease;
+  position: relative;
+  background: linear-gradient(110deg, #a2dfff, #ffbab3);
+}
+
+.phone-size {
+  height: calc(100% - 5rem) !important;
+}
+
+.phone-size-menu-opened {
+  height: calc(100% - 11.05rem) !important;
+}
+
+.menu-btn {
+  background-color: transparent;
+  width: 50px;
+  height: 50px;
+  position: relative;
+}
+
+.menu-btn > span {
+  display: block;
+  transition: all 0.25s ease;
+  height: 5px;
+  margin: 6px 0;
+  background-color: #333;
+  position: absolute;
+}
+
+.line1,
+.line3 {
+  width: 50%;
+}
+
+.line1 {
+  top: 0;
+  left: 0;
+}
+
+.line2 {
+  width: 95%;
+  left: calc(50% - 46.5%);
+  top: calc(50% - 8px);
+}
+
+.line3 {
+  right: 0;
+  bottom: 0;
+}
+
+.line1-opened,
+.line3-opened {
+  transform: rotate(45deg);
+}
+
+.line1-opened {
+  top: 9px;
+  left: 5px;
+}
+
+.line2-opened {
+  transform: rotate(-45deg);
+}
+
+.line3-opened {
+  bottom: 8px;
+  right: 4px;
+}
+
+.personIcon1,
+.personIcon2 {
+  position: absolute;
+}
+
+.personIcon1 {
+  top: 2px;
+  left: calc(50% - 21px);
+  color: orange;
+  font-size: 25px !important;
+}
+
+.personIcon2 {
+  color: blue;
+  z-index: 1;
+  left: calc(50% - 9px);
+}
+
+.listItem {
+  transition: opacity 0.2s ease;
+  height: 5rem;
+  margin-top: 2rem;
+  user-select: none;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.listItemOn {
+  opacity: 1;
+}
+
+.menuLink {
+  justify-content: space-evenly;
+}
+
+.iconContainer {
+  position: relative;
+  width: 75%;
+  height: 50%;
+  text-align: center;
+}
+
+.listItemText {
+  color: #474747;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 510px) {
+  #contact-app {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
+
+  #view-section {
+    background: none;
+    height: 100%;
+  }
+
+  #view-section::-webkit-scrollbar,
+  #view-section::-webkit-scrollbar-thumb {
+    all: inherit;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  #contact-app {
+    flex-direction: column;
+  }
+
+  #mobile-menu {
+    display: flex;
+  }
+
+  #navbar-section {
+    display: none;
+  }
+}

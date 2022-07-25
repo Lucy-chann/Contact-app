@@ -1,0 +1,14 @@
+#button {
+  width: 5rem;
+  height: 5rem;
+  transition: all 0.1s ease;
+  background-color: #fcfcfc;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 5px 1px rgba(144, 144, 144, 0.4);
+  pointer-events: all;
+}
+
+#button:active {
+  box-shadow: 0 2px 3px rgba(144, 144, 144, 0.4);
+}
