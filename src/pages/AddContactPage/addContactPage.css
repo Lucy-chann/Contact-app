@@ -1,0 +1,259 @@
+.add-contact-container form,
+.form-wrapper,
+.form-inputs-container,
+.inputs-section,
+.profile-image-section,
+.pfp-img-container,
+.name-lastName-container {
+  display: flex;
+}
+
+.add-contact-container form,
+.inputs-section,
+.profile-image-section {
+  flex-direction: column;
+}
+
+.add-contact-container form,
+.form-inputs-container {
+  justify-content: space-around;
+  align-items: center;
+}
+
+.add-contact-container {
+  align-items: center;
+  padding-left: 25px;
+}
+
+#add-contact-title {
+  width: 100%;
+  background: linear-gradient(160deg, dodgerblue, violet);
+  background-clip: text;
+  text-align: center;
+  color: transparent;
+  font-size: 2.5rem;
+  padding: 2rem 0 0;
+  font-weight: 900;
+}
+
+.form-wrapper {
+  min-height: 36rem;
+  justify-content: center;
+  align-items: center;
+  height: calc(100% - 6rem);
+}
+
+.form-section {
+  width: 90%;
+  height: 70%;
+  margin-bottom: 5rem;
+  min-height: 27.5rem;
+  min-width: 14.35rem;
+  max-width: 50rem;
+  max-height: 30rem;
+  position: relative;
+  background-color: #fff;
+  border-radius: 2rem;
+}
+
+.form-section form {
+  height: 100%;
+}
+
+.form-inputs-container {
+  margin-top: 15px;
+}
+
+.add-contact-container form > * {
+  width: 90%;
+}
+
+.inputs-section,
+.profile-image-section {
+  height: 100%;
+  width: 50%;
+}
+
+.inputs-section {
+  justify-content: center;
+}
+
+.inputs-section > * {
+  margin: 1rem 0;
+}
+
+.name-lastName-container {
+  justify-content: space-between;
+}
+
+.name-lastName-container > label {
+  width: 50%;
+}
+
+.name-lastName-container > label:first-child {
+  margin-right: 0.35rem;
+}
+
+.name-lastName-container > label:last-child {
+  margin-left: 0.35rem;
+}
+
+.pfp-container {
+  min-width: 220px;
+  min-height: 220px;
+  width: 225px;
+  height: 225px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.pfp-container > * {
+  width: 100%;
+  height: 100%;
+}
+
+.pfp-container img {
+  height: 95%;
+  width: 95%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  position: relative;
+  user-select: none;
+}
+
+.pfp-img-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(160deg, dodgerblue, violet);
+}
+
+.profile-image-section {
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-image-section > * {
+  margin: 5px 0;
+}
+
+#profile-picture-input {
+  width: 200%;
+  height: 100%;
+  transform: translate(-50%);
+  opacity: 0;
+  cursor: inherit;
+}
+
+.pfp-buttons-container {
+  width: 100%;
+  padding: 5px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-reset-pfp,
+.change-pfp-btn {
+  transition: all 0.1s ease;
+  width: 120px;
+  height: 44px;
+  outline: 1px solid royalblue;
+  background-color: #fff;
+  box-shadow: 0 3px royalblue;
+  cursor: pointer;
+  user-select: none;
+  margin: 0 5px;
+}
+
+.change-pfp-btn {
+  --transform-translate-val: translate(-50%, -50%);
+  position: relative;
+  overflow: hidden;
+}
+
+.change-pfp-btn:active,
+.btn-reset-pfp:active {
+  transform: translate(0, 3px);
+  box-shadow: 0 0;
+}
+
+.btn-reset-pfp,
+.change-pfp-btn::after {
+  font-size: 1rem;
+  color: #414141;
+}
+
+.change-pfp-btn::after {
+  content: "Change";
+  transition: color 0.1s ease;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  pointer-events: none;
+  transform: var(--transform-translate-val);
+}
+
+.change-pfp-btn:active::after,
+.btn-reset-pfp:active {
+  color: royalblue;
+}
+
+#submit-btn {
+  transition: all 0.1s ease;
+  padding: 10px 0;
+  margin: 1rem 0;
+  background-color: #fff;
+  box-shadow: 0 2px royalblue;
+  border: 1px solid royalblue;
+  border-radius: 7px;
+  font-size: 1rem;
+  color: #414141;
+  cursor: pointer;
+}
+
+#submit-btn:active {
+  color: royalblue;
+  transform: translate(0, 3px);
+  box-shadow: 0 0;
+}
+
+@media screen and (max-width: 850px) {
+  .form-section {
+    width: 100%;
+    min-height: 47em;
+    margin-bottom: 1.5rem;
+    border-radius: 13px;
+  }
+
+  #add-contact-title {
+    padding: 1.5rem 0;
+    font-size: 2rem;
+  }
+
+  .form-inputs-container {
+    flex-direction: column;
+  }
+
+  .inputs-section,
+  .profile-image-section {
+    width: 100%;
+  }
+
+  .inputs-section {
+    order: 1;
+    margin-top: 2rem;
+  }
+
+  .pfp-buttons-container {
+    padding-top: 10px;
+  }
+
+  .btn-reset-pfp,
+  .change-pfp-btn {
+    width: 100%;
+  }
+}
