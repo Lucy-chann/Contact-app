@@ -7,3 +7,13 @@
   align-items: center;
   list-style-type: none;
 }
+
+@media screen and (max-height: 410px) {
+  .navbarList {
+    justify-content: space-evenly;
+  }
+
+  .navbarList li {
+    margin-top: 0;
+  }
+}

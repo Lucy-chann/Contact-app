@@ -110,6 +110,7 @@
   min-height: 220px;
   width: 225px;
   height: 225px;
+  margin-top: -10px;
   border-radius: 50%;
   overflow: hidden;
 }
@@ -143,10 +144,6 @@
   align-items: center;
 }
 
-.profile-image-section > * {
-  margin: 5px 0;
-}
-
 #profile-picture-input {
   width: 200%;
   height: 100%;
@@ -163,11 +160,15 @@
   align-items: center;
 }
 
+.pfp-buttons-container > button{
+  margin-top: 13px;
+}
+
 .btn-reset-pfp,
 .change-pfp-btn {
   transition: all 0.1s ease;
   width: 120px;
-  height: 44px;
+  height: 43px;
   outline: 1px solid royalblue;
   background-color: #fff;
   box-shadow: 0 3px royalblue;
@@ -230,7 +231,7 @@
 
 @media screen and (max-width: 850px) {
   .add-contact-container {
-    padding-bottom: 2rem;
+    padding-bottom: 1.25rem;
   }
 
   .form-title-container {
