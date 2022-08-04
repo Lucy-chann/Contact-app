@@ -96,7 +96,9 @@ const AddContactPage = ({ pageDimmer }) => {
 
   return (
     <div className="add-contact-container">
-      <h1 id="add-contact-title">Add contact form</h1>
+      <div className="form-title-container">
+        <h1 id="add-contact-title">Add contact form</h1>
+      </div>
       <div className="form-wrapper">
         <section className="form-section">
           <AddContactForm
