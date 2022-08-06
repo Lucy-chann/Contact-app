@@ -23,7 +23,7 @@ const AddContactPage = ({ pageDimmer }) => {
   const [inputValues, setInputValues] = useState(initialInputValues);
   const [imageURL, setImageURL] = useState("");
 
-  const { getAllUserContacts } = useStateContexts();
+  const { getUserContacts } = useStateContexts();
 
   const { changePage } = useNavbarListItemIndexContext();
 
@@ -75,7 +75,7 @@ const AddContactPage = ({ pageDimmer }) => {
         }
       )
         .then(() => {
-          getAllUserContacts();
+          getUserContacts();
           setInputValues({});
           changePage("/contacts");
         })

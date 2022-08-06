@@ -7,24 +7,28 @@ const createUserToken = (len) => {
     .substring(2, len + 2);
 };
 
-const getUserToken = async (fetchContactsFunc) => {
+const getUserByToken = async (fetchUserFunc) => {
   const userTokenPromise = new Promise(async (resolve, reject) => {
     try {
       const userToken = localStorage.getItem("user-token");
       if (userToken) {
-        fetchContactsFunc();
+        fetchUserFunc();
+        resolve(userToken);
       } else {
         const newUserToken = createUserToken(10);
+
         localStorage.setItem("user-token", newUserToken);
-        await requestTryCatcher(() => postNewUser(newUserToken));
+
+        requestTryCatcher(() => postNewUser(newUserToken));
+
+        resolve(newUserToken);
       }
-      resolve(userToken);
     } catch (err) {
       reject(err);
     }
   });
 
-  const res = await userTokenPromise.then(
+  const res = userTokenPromise.then(
     (val) => {
       return { done: true, userToken: val };
     },
@@ -37,4 +41,4 @@ const getUserToken = async (fetchContactsFunc) => {
   return res;
 };
 
-export { getUserToken, createUserToken };
+export { getUserByToken, createUserToken };

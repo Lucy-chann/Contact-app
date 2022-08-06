@@ -5,8 +5,7 @@ import {
   getUserApiRequest,
   httpGetUserContacts,
 } from "../services/userServices";
-import { getUserToken } from "../utils/UserTokenFuncs/UserTokenFuncs";
-import { notification } from "../utils/alerts";
+import { getUserByToken } from "../utils/UserTokenFuncs/UserTokenFuncs";
 
 const UserContext = createContext();
 const useUserContext = () => useContext(UserContext);
@@ -34,10 +33,8 @@ const contactInitialValue = {
 const userInitialValues = {
   id: null,
   userToken: null,
-  userDatas: {
-    contacts: [],
-    profile: {},
-  },
+  profile: {},
+  deviceType: null,
 };
 
 const ContactsContextComp = ({ history, children }) => {
@@ -59,39 +56,35 @@ const ContactsContextComp = ({ history, children }) => {
     setNavbarListItemOn(pagePath);
   };
 
-  const getAllUsers = async () => {
-    const res = await requestTryCatcher(getUserApiRequest);
-
-    setUser(res.data.length > 0 ? res.data[0] : userInitialValues);
-
-    return res;
-  };
-
-  const getAllUserContacts = async () => {
+  const getUser = async () => {
     const res = await requestTryCatcher(() =>
-      httpGetUserContacts(localStorage.getItem("user-token"))
+      getUserApiRequest(localStorage.getItem("user-token"))
     );
 
-    setContacts(res.data);
+    setUser(res.data.length > 0 ? res.data[0] : userInitialValues);
+  };
 
-    return res;
+  const getUserContacts = async () => {
+    const { data } = await requestTryCatcher(() =>
+      httpGetUserContacts(user.userToken)
+    );
+
+    setContacts(data);
   };
 
   useEffect(() => {
     changePage("/");
-    getUserToken(getAllUserContacts)
-      .then((res) => {
-        res.done
-          ? requestTryCatcher(getAllUsers)
-          : notification({ type: "error", value: "Error" });
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    getUserByToken(getUser).then((res) => {
+      res.done && getUser();
+    });
   }, []);
 
+  useEffect(() => {
+    getUserContacts();
+  }, [user]);
+
   return (
-    <StateContexts.Provider value={{ windowWidth, getAllUserContacts }}>
+    <StateContexts.Provider value={{ windowWidth, getUserContacts }}>
       <UserContext.Provider value={{ user, setUser, contacts, setContacts }}>
         <NavbarListItemIndexContext.Provider
           value={{ navbarListItemOn, setNavbarListItemOn, changePage }}

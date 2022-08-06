@@ -1,7 +1,5 @@
 import http from "./httpServices";
 
-const localUserToken = localStorage.getItem("user-token");
-
 const getDeviceType = () => {
   const ua = navigator.userAgent;
   if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
@@ -31,8 +29,8 @@ function httpPostUser(userData) {
   return http.post("/users", userData);
 }
 
-function httpGetUserByToken() {
-  return http.get(`/users?userToken=${localUserToken}`);
+function httpGetUserByToken(userToken) {
+  return http.get(`/users?userToken=${userToken}`);
 }
 
 function httpDeleteUser(userIndex) {
@@ -41,8 +39,8 @@ function httpDeleteUser(userIndex) {
 
 function httpUpdateUser() {}
 
-function getUserApiRequest() {
-  const response = httpGetUserByToken();
+function getUserApiRequest(token) {
+  const response = httpGetUserByToken(token);
   return response;
 }
 
